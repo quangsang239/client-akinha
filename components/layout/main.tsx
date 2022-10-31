@@ -2,7 +2,8 @@ import { motion } from "framer-motion";
 import ReactMapGL from "react-map-gl";
 
 import { LayoutProps } from "../../models";
-import { FaSearchLocation } from "react-icons/fa";
+import Search from "./search";
+
 export function MainLayout(props: LayoutProps) {
   return (
     <motion.div
@@ -11,9 +12,7 @@ export function MainLayout(props: LayoutProps) {
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 2 }}
     >
-      <button className="w-12 h-12 absolute bg-white z-10 top-5 left-1/2 -translate-x-1/2 rounded-lg border-solid border-black border-2">
-        <FaSearchLocation className="w-8 h-8 text-rose-500 relative top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 hover:cursor-pointer" />
-      </button>
+      <Search />
       <ReactMapGL
         initialViewState={{
           latitude: 10.801607983756918,

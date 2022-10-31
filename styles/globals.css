@@ -1,3 +1,45 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@layer base {
+  html {
+    @apply font-sans;
+  }
+  body {
+    @apply box-border;
+  }
+  h1 {
+    @apply text-5xl font-bold;
+  }
+  h2 {
+    @apply text-4xl;
+  }
+  h3 {
+    @apply text-3xl;
+  }
+
+  h4 {
+    @apply text-2xl;
+  }
+}
+
+@layer components {
+  .group {
+    @apply h-[60px] relative mb-[30px];
+  }
+  .group-register {
+    @apply h-[60px] relative mb-[10px];
+  }
+  .label {
+    @apply absolute top-[45px] left-[5%] duration-[0.5s];
+  }
+  .input-text {
+    @apply mt-[30px] w-[100%] h-[50px] border-none outline-none bg-white bg-opacity-60;
+  }
+  .change-form {
+    @apply w-1/2 float-left flex justify-center items-center duration-[1s] h-[40px] rounded-[20px] hover:cursor-pointer;
+  }
+  .is-active {
+    @apply text-white bg-[#909FEE];
+  }
+}
