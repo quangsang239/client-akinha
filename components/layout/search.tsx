@@ -1,9 +1,39 @@
-import { useState } from "react";
-export interface ISearchProps {}
+import { useState, FormEvent } from "react";
+import { toast } from "react-toastify";
 
-export default function Search(props: ISearchProps) {
+import { authApi } from "../../api-client";
+import { MapParameter } from "../../models";
+export interface ISearchProps {
+  setViewState: ({ latitude, longitude, zoom }: MapParameter) => void;
+}
+
+export default function Search({ setViewState }: ISearchProps) {
   const [isSearch, setIsSearch] = useState(false);
   const [isDistance, setIsDistance] = useState(false);
+  const [searchInput, setSearchInput] = useState("");
+  const handleChangeSearchInput = (e: FormEvent<HTMLInputElement>) => {
+    setSearchInput(e.currentTarget.value);
+  };
+  const handleOnClickSearch = async () => {
+    if (!isSearch) {
+      setIsSearch(true);
+    } else if (searchInput.length === 0) {
+      toast.warning("Vui lòng nhập địa chỉ bạn nhé", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+    } else {
+      try {
+        const locationSearch = await authApi.getLocation(searchInput);
+        setViewState({
+          latitude: Number(locationSearch.data.features[0].center[1]),
+          longitude: Number(locationSearch.data.features[0].center[0]),
+          zoom: 15,
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
   return (
     <div>
       <div
@@ -20,7 +50,9 @@ export default function Search(props: ISearchProps) {
               : "w-0 duration-1000 ease-in relative top-[-25%] left-[20px]"
           }
           type="text"
-          placeholder={isDistance ? "Điểm bắt đầu" : "Tìm kiêm"}
+          placeholder={isDistance ? "Điểm đi" : "Tìm kiêm"}
+          value={searchInput}
+          onChange={handleChangeSearchInput}
         />
 
         <button className="relative w-[40px] h-[40px] top-0 left-0 bg-pink-500 hover:cursor-pointer hover:opacity-70">
@@ -31,7 +63,7 @@ export default function Search(props: ISearchProps) {
             strokeWidth={2.5}
             stroke="currentColor"
             className="w-7 h-7 text-white m-auto"
-            onClick={() => setIsSearch(!isSearch)}
+            onClick={() => handleOnClickSearch()}
           >
             <path
               strokeLinecap="round"
@@ -92,11 +124,11 @@ export default function Search(props: ISearchProps) {
         <input
           className={
             isDistance
-              ? "w-[220px] relative top-[-10px] left-[20px] bg-pink-500 duration-1000 ease-out border-none outline-none text-white placeholder:text-white placeholder:duration-1000 placeholder:ease-out"
+              ? "w-[220px] relative top-[-8px] left-[20px] bg-pink-500 duration-1000 ease-out border-none outline-none text-white placeholder:text-white placeholder:duration-1000 placeholder:ease-out"
               : "w-0 duration-900 ease-in relative top-[-25%] left-[20px]"
           }
           type="text"
-          placeholder={isDistance ? "Điểm kết thúc" : ""}
+          placeholder={isDistance ? "Điểm đến" : ""}
         />
 
         <button
