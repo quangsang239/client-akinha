@@ -24,7 +24,7 @@
 }
 
 @layer components {
-  .group {
+  .group-login {
     @apply h-[60px] relative mb-[30px];
   }
   .group-register {
@@ -41,5 +41,8 @@
   }
   .is-active {
     @apply text-white bg-[#909FEE];
+  }
+  .dropdown:hover .dropdown-child {
+    @apply block;
   }
 }
