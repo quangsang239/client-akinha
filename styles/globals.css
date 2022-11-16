@@ -28,16 +28,22 @@
     @apply h-[60px] relative mb-[30px];
   }
   .group-register {
-    @apply h-[60px] relative mb-[10px];
+    @apply h-[60px] relative mb-[20px];
   }
   .label {
     @apply absolute top-[45px] left-[5%] duration-[0.5s];
   }
   .input-text {
-    @apply mt-[30px] w-[100%] h-[50px] border-none outline-none bg-white bg-opacity-60;
+    @apply mt-[30px] w-[100%] h-[50px] border-none outline-none bg-white bg-opacity-60 rounded-[10px];
   }
   .change-form {
     @apply w-1/2 float-left flex justify-center items-center duration-[1s] h-[40px] rounded-[20px] hover:cursor-pointer;
+  }
+  .form-login {
+    @apply transition duration-[200s] ease-in-out absolute before:z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-[500px] before:absolute before:bottom-1/2 before:left-[80%] before:content-[''] before:w-600 before:h-600 before:bg-gradient-to-tr before:from-blue-c-2 before:to-purple-c-1 before:rounded-[999px] before:animate-background-animation after:absolute after:top-[40%] after:right-[60%] after:content-[''] after:w-[400px] after:h-[400px] after:bg-gradient-to-tr after:from-blue-c-2 after:to-purple-c-1 after:rounded-[999px] after:blur-[10px] after:animate-background-animation after:delay-200 after:z-10;
+  }
+  .form-register {
+    @apply transition duration-[200s] ease-in-out absolute before:z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-[610px] before:absolute before:bottom-1/2 before:left-[80%] before:content-[''] before:w-600 before:h-600 before:bg-gradient-to-tr before:from-blue-c-2 before:to-purple-c-1 before:rounded-[999px] before:animate-background-animation after:absolute after:top-[40%] after:right-[60%] after:content-[''] after:w-[400px] after:h-[400px] after:bg-gradient-to-tr after:from-blue-c-2 after:to-purple-c-1 after:rounded-[999px] after:blur-[10px] after:animate-background-animation after:delay-200 after:z-10;
   }
   .is-active {
     @apply text-white bg-[#909FEE];

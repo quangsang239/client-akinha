@@ -1,9 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useState, useEffect } from "react";
 
 export interface IHomeProps {}
 
 export default function Home(props: IHomeProps) {
+  const [user, setUser] = useState();
+  useEffect(() => {
+    setUser(JSON.parse(localStorage.getItem("name") || "{}"));
+  }, []);
+  console.log(user);
+
   return (
     <>
       {/* <Header></Header> */}
@@ -19,6 +26,7 @@ export default function Home(props: IHomeProps) {
                     Quay về bản đồ
                   </a>
                 </Link>
+
                 <Link href="/home/login" replace>
                   <a className="text-white text-2xl font-bold ml-[30px] underline underline-offset-8">
                     Đăng nhập để đăng phòng
@@ -161,9 +169,11 @@ export default function Home(props: IHomeProps) {
               </div>
             </div>
             {/* end item */}
-            <button className="text-center w-full h-[50px] text-xl text-blue-500 hover:opacity-70">
-              Xem tất cả
-            </button>
+            <Link href="/home/view-all">
+              <button className="text-center w-full h-[50px] text-xl text-blue-500 hover:opacity-70">
+                Xem tất cả
+              </button>
+            </Link>
           </div>
         </div>
       </div>
