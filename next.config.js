@@ -6,9 +6,16 @@ const nextConfig = {
     domains: ["firebasestorage.googleapis.com"],
   },
   env: {
-    TOKEN_MAP:
-      "pk.eyJ1IjoiY2Z0bmloIiwiYSI6ImNsNjdzZnB5bzNudTQzYm1wa21mbXo2emEifQ.SDqggkiy2bskCxRu4dYYkA",
-    API_URL: "http://localhost:1305",
+    TOKEN_MAP: process.env.TOKEN_MAP,
+    API_URL: process.env.API_URL,
+    FIREBASE_CONFIG: {
+      apiKey: process.env.FIREBASE_CONFIG_APIKEY,
+      authDomain: process.env.FIREBASE_CONFIG_AUTHDOMAIN,
+      projectId: process.env.FIREBASE_CONFIG_PROJECTID,
+      storageBucket: process.env.FIREBASE_CONFIG_STORAGEBUCKET,
+      messagingSenderId: process.env.FIREBASE_CONFIG_MESSAGINGSENDERID,
+      appId: process.env.FIREBASE_CONFIG_APPID,
+    },
   },
 };
 

@@ -43,7 +43,7 @@
     @apply transition duration-[200s] ease-in-out absolute before:z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-[500px] before:absolute before:bottom-1/2 before:left-[80%] before:content-[''] before:w-600 before:h-600 before:bg-gradient-to-tr before:from-blue-c-2 before:to-purple-c-1 before:rounded-[999px] before:animate-background-animation after:absolute after:top-[40%] after:right-[60%] after:content-[''] after:w-[400px] after:h-[400px] after:bg-gradient-to-tr after:from-blue-c-2 after:to-purple-c-1 after:rounded-[999px] after:blur-[10px] after:animate-background-animation after:delay-200 after:z-10;
   }
   .form-register {
-    @apply transition duration-[200s] ease-in-out absolute before:z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-[610px] before:absolute before:bottom-1/2 before:left-[80%] before:content-[''] before:w-600 before:h-600 before:bg-gradient-to-tr before:from-blue-c-2 before:to-purple-c-1 before:rounded-[999px] before:animate-background-animation after:absolute after:top-[40%] after:right-[60%] after:content-[''] after:w-[400px] after:h-[400px] after:bg-gradient-to-tr after:from-blue-c-2 after:to-purple-c-1 after:rounded-[999px] after:blur-[10px] after:animate-background-animation after:delay-200 after:z-10;
+    @apply transition duration-[200s] ease-in-out absolute before:z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[680px] before:absolute before:bottom-1/2 before:left-[80%] before:content-[''] before:w-600 before:h-600 before:bg-gradient-to-tr before:from-blue-c-2 before:to-purple-c-1 before:rounded-[999px] before:animate-background-animation after:absolute after:top-[40%] after:right-[60%] after:content-[''] after:w-[400px] after:h-[400px] after:bg-gradient-to-tr after:from-blue-c-2 after:to-purple-c-1 after:rounded-[999px] after:blur-[10px] after:animate-background-animation after:delay-200 after:z-10;
   }
   .is-active {
     @apply text-white bg-[#909FEE];
@@ -51,4 +51,27 @@
   .dropdown:hover .dropdown-child {
     @apply block;
   }
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.scroll-bar::-webkit-scrollbar {
+  display: none;
+}
+.scroll-bar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scroll-bar-image::-webkit-scrollbar {
+  height: 10px;
+}
+.scroll-bar-image::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 100px;
+}
+.scroll-bar-image::-webkit-scrollbar-track {
+  background-color: white;
+  border-radius: 100px;
 }

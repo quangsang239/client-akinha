@@ -1,6 +1,6 @@
+import { toast } from "react-toastify";
 import httpProxy, { ProxyResCallback } from "http-proxy";
 import type { NextApiRequest, NextApiResponse } from "next";
-import Cookies from "cookies";
 
 const proxy = httpProxy.createProxyServer();
 export const config = {
@@ -22,29 +22,9 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       });
       proxyRes.on("end", () => {
         try {
-          const {
-            accessToken,
-            expireAt,
-            verified,
-            userName,
-            message,
-            code,
-            name,
-            phoneNumber,
-          } = JSON.parse(body);
-          //convert cookies
-          const cookies = new Cookies(req, res, {
-            secure: process.env.NODE_ENV !== "development",
-          });
-          cookies.set("token", accessToken, {
-            httpOnly: true,
-            sameSite: "lax",
-            expires: new Date(expireAt),
-          });
+          const { message, code } = JSON.parse(body);
 
-          (res as NextApiResponse)
-            .status(200)
-            .json({ message, code, verified, userName, name, phoneNumber });
+          (res as NextApiResponse).status(200).json({ code, message });
 
           //
         } catch (error) {
