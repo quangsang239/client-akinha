@@ -5,9 +5,6 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    borderRadius: {
-      "radius-c": "30% 70% 70% 30% / 30% 30% 70% 70% ",
-    },
     extend: {
       colors: {
         "blue-c-1": "#BEEBF1",
@@ -16,6 +13,12 @@ module.exports = {
         "purple-c-1": "#C2ADF3",
         "blue-c-3": "#90ABF4",
         "pink-c-2": "#E597D5",
+        "main-color": "#fb836d",
+        "text-main": "#273f50",
+        subtext: "#909090",
+      },
+      borderRadius: {
+        "radius-c": "30% 70% 70% 30% / 30% 30% 70% 70% ",
       },
       spacing: {
         600: "600px",
@@ -32,6 +35,9 @@ module.exports = {
       },
       animation: {
         "background-animation": "background 5s ease-in-out infinite alternate",
+      },
+      backgroundImage: {
+        "loading-page": "url('/images/loading.gif')",
       },
     },
     fontFamily: {
