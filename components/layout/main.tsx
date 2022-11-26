@@ -31,7 +31,6 @@ export function MainLayout(props: LayoutProps) {
   };
   useEffect(() => {
     setItem(data?.data);
-    console.log(data?.data);
   }, [data]);
   return (
     <div className="overflow-hidden relative grid grid-cols-12 border-b-2">

@@ -29,7 +29,7 @@ export default function Profile({ user }: IProfileProps) {
     setInputUsername(data?.data.user.userName);
     setIsEmail(true);
   }, [data]);
-  console.log(data);
+
   const handleOnchangeInputName = (e: FormEvent<HTMLInputElement>) => {
     setInputName(e.currentTarget.value);
   };

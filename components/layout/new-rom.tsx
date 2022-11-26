@@ -18,8 +18,6 @@ export interface INewRoomProps {
 }
 
 export default memo(function NewRoom({ setIsAddRoom, user }: INewRoomProps) {
-  console.log(user);
-
   const [images, setImages] = useState<FileList>();
   const [nameRoom, setNameRoom] = useState("");
   // const [utilities, setUtilities] = useState<string[]>([]);
@@ -57,7 +55,6 @@ export default memo(function NewRoom({ setIsAddRoom, user }: INewRoomProps) {
     } else {
       utilities.current.push(event.currentTarget.value);
     }
-    console.log(utilities.current);
   };
   const handleClickAddRoom = async () => {
     if (images && images?.length >= 5) {
@@ -70,8 +67,6 @@ export default memo(function NewRoom({ setIsAddRoom, user }: INewRoomProps) {
         water.length > 0
       ) {
         authApi.getLocation(address).then(async (result) => {
-          console.log(result);
-
           if (result?.data.features && result?.data.features.length > 0) {
             const roomName = nameRoom
               .normalize("NFD")

@@ -22,7 +22,6 @@ export default function ViewAll(props: IViewAllProps) {
   const { data } = useSWR(`/user/get-profile/${user.userName}`, {
     dedupingInterval: 60 * 60 * 1000,
   });
-  console.log({ name: data?.data });
 
   useEffect(() => {
     if (localStorage.getItem("user")) {
