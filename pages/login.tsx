@@ -66,7 +66,6 @@ export default function Login(props: ILoginProps) {
             password: inputPassword,
           })
           .then((data) => {
-            console.log(data);
             localStorage.setItem(
               "user",
               JSON.stringify({

@@ -33,7 +33,7 @@ export default function Header({ user }: IHeaderProps) {
             />
           </svg>
           {user?.name ? (
-            <span className="text-xl">{user?.name}</span>
+            <span className="text-xl">{user?.userName}</span>
           ) : null}
         </div>
       </div>

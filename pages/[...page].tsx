@@ -1,15 +1,14 @@
 import * as React from "react";
 import Footer from "../components/common/footer";
 import Header from "../components/common/header";
-import NotFound from "../components/layout/not-found";
+import NotFoundPage from "../components/layout/not-found-page";
+export interface IOutSitePageProps {}
 
-export interface INotFoundPageProps {}
-
-export default function NotFoundPage(props: INotFoundPageProps) {
+export default function OutSitePage(props: IOutSitePageProps) {
   return (
     <div>
       <Header />
-      <NotFound />
+      <NotFoundPage />
       <Footer />
     </div>
   );

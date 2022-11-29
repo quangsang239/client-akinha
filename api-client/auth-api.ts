@@ -1,4 +1,5 @@
 import {
+  GetDirection,
   LoginPayload,
   RegisterPayload,
   UpdateProfilePayload,
@@ -30,7 +31,18 @@ export const authApi = {
   createNewRoom(payload: CreateNewRoomPayload) {
     return axiosClient.post("/room/create-room", payload);
   },
+  updateRoom(payload: CreateNewRoomPayload) {
+    return axiosClient.post("/room/update-room", payload);
+  },
+  deleteRoom(id: string) {
+    return axiosClient.delete(`/room/delete-room/${id}`);
+  },
   getRoomById({ userName, page }: GetRoomById) {
     return axiosClient.get(`/room/get-room/${userName}/page=${page}`);
+  },
+  getDirection(addressFirst: GetDirection, addressSecond: GetDirection) {
+    return axiosClient.get(
+      `https://api.mapbox.com/directions/v5/mapbox/driving/{coordinates}`
+    );
   },
 };

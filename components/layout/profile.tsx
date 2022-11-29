@@ -2,7 +2,7 @@ import { FormEvent, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import useSWR from "swr";
 import { authApi } from "../../api-client";
-
+import { useRouter } from "next/router";
 export interface IProfileProps {
   user: {
     name: string;
@@ -12,9 +12,8 @@ export interface IProfileProps {
 }
 
 export default function Profile({ user }: IProfileProps) {
-  const { data } = useSWR(`/user/get-profile/${user.userName}`, {
-    dedupingInterval: 60 * 60 * 1000,
-  });
+  const router = useRouter();
+  const { data, error } = useSWR(`/user/get-profile/${user.userName}`);
   const [inputName, setInputName] = useState("");
   const [inputEmail, setInputEmail] = useState("");
   const [inputPhoneNumber, setInputPhoneNumber] = useState("");
@@ -29,7 +28,11 @@ export default function Profile({ user }: IProfileProps) {
     setInputUsername(data?.data.user.userName);
     setIsEmail(true);
   }, [data]);
-  console.log(data);
+  useEffect(() => {
+    if (error) {
+      router.replace("/login");
+    }
+  }, [error]);
   const handleOnchangeInputName = (e: FormEvent<HTMLInputElement>) => {
     setInputName(e.currentTarget.value);
   };
@@ -43,7 +46,10 @@ export default function Profile({ user }: IProfileProps) {
       ) {
         setIsEmail(true);
       } else setIsEmail(false);
-    } else setVerified("true");
+    } else {
+      setVerified("true");
+      setIsEmail(true);
+    }
     setInputEmail(e.currentTarget.value);
   };
   const handleOnchangeInputPhoneNumber = (e: FormEvent<HTMLInputElement>) => {
