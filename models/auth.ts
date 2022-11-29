@@ -36,8 +36,13 @@ export interface CreateNewRoomPayload {
   sex: string;
   category: string;
   water: number;
+  createAt?: Date;
 }
 export interface GetRoomById {
   userName: string;
   page: number;
+}
+export interface GetDirection {
+  latitude: number;
+  longitude: number;
 }

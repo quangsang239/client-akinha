@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import { useRouter } from "next/router";
 
 import Footer from "../../components/common/footer";
@@ -6,21 +6,19 @@ import Header from "../../components/common/header";
 import ManagerProfile from "../../components/layout/manager-profile";
 import NewRoom from "../../components/layout/new-rom";
 import { Loading } from "../../components/common/loading";
-import useSWR from "swr";
+import { CreateNewRoomPayload } from "../../models";
 
 export interface IViewAllProps {}
 
 export default function ViewAll(props: IViewAllProps) {
   const router = useRouter();
   const [isAddRoom, setIsAddRoom] = useState(false);
+  const [dataRoom, setDataRoom] = useState<CreateNewRoomPayload | null>(null);
   const [user, setUser] = useState({
     userName: "",
     verified: false,
     name: "",
     phoneNumber: "",
-  });
-  const { data } = useSWR(`/user/get-profile/${user.userName}`, {
-    dedupingInterval: 60 * 60 * 1000,
   });
 
   useEffect(() => {
@@ -34,10 +32,20 @@ export default function ViewAll(props: IViewAllProps) {
     return (
       <div className="relative">
         <Header user={user} />
-        <ManagerProfile setIsAddRoom={setIsAddRoom} user={user} />
+        <ManagerProfile
+          setIsAddRoom={setIsAddRoom}
+          isAddRoom={isAddRoom}
+          user={user}
+          setDataRoom={setDataRoom}
+        />
         <Footer />
         {isAddRoom && (
-          <NewRoom setIsAddRoom={setIsAddRoom} user={data?.data.user} />
+          <NewRoom
+            setIsAddRoom={setIsAddRoom}
+            user={user}
+            dataRoom={dataRoom}
+            setDataRoom={setDataRoom}
+          />
         )}
       </div>
     );

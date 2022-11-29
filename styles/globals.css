@@ -75,3 +75,17 @@ input::-webkit-inner-spin-button {
   background-color: white;
   border-radius: 100px;
 }
+.mapboxgl-popup-close-button {
+  color: red;
+  display: none;
+}
+
+.mapboxgl-popup-content {
+  overflow: hidden;
+  padding: 50px;
+  border-radius: 20px;
+}
+.map-box-popup {
+  padding: 0 !important;
+  margin: 0 !important;
+}

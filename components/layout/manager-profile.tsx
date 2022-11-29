@@ -5,20 +5,25 @@ import { authApi } from "../../api-client";
 import ManagerRoom from "./manager-room";
 import NewPassword from "./new-password";
 import Profile from "./profile";
+import { CreateNewRoomPayload } from "../../models";
 
 export interface IManagerProfileProps {
   setIsAddRoom: (isAddRoom: boolean) => void;
+  setDataRoom: (dataRoom: CreateNewRoomPayload) => void;
   user: {
     name: string;
     verified: boolean;
     userName: string;
     phoneNumber: string;
   };
+  isAddRoom: boolean;
 }
 
 export default function ManagerProfile({
   setIsAddRoom,
   user,
+  setDataRoom,
+  isAddRoom,
 }: IManagerProfileProps) {
   const [page, setPage] = useState(1);
   const router = useRouter();
@@ -124,7 +129,12 @@ export default function ManagerProfile({
         {page === 1 ? (
           <Profile user={user} />
         ) : page === 2 ? (
-          <ManagerRoom setIsAddRoom={setIsAddRoom} user={user} />
+          <ManagerRoom
+            setIsAddRoom={setIsAddRoom}
+            setDataRoom={setDataRoom}
+            user={user}
+            isAddRoom={isAddRoom}
+          />
         ) : (
           <NewPassword user={user} />
         )}

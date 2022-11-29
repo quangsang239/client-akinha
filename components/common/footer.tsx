@@ -6,7 +6,7 @@ export interface IFooterProps {}
 
 export default function Footer(props: IFooterProps) {
   return (
-    <div className="bg-white w-full h-[300px]">
+    <div className="bg-white w-full h-[300px] relative">
       <div className="w-[90%] m-auto flex justify-between mt-[30px] border-b-2">
         <div className="">
           <h2 className="font-bold text-6xl text-main-color mb-[30px]">
