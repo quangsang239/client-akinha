@@ -58,7 +58,17 @@ export function MainLayout(props: LayoutProps) {
   }, [item]);
   useEffect(() => {
     if (localStorage.getItem("user")) {
-      setUser(JSON.parse(localStorage.getItem("user") || ""));
+      setUser(
+        JSON.parse(
+          localStorage.getItem("user") ||
+            JSON.stringify({
+              userName: "",
+              verified: false,
+              name: "",
+              phoneNumber: "",
+            })
+        )
+      );
     }
   }, []);
   if (item) {
