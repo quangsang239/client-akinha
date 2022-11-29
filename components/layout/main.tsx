@@ -196,7 +196,7 @@ export function MainLayout(props: LayoutProps) {
               </div>
               <div className="mx-auto w-full">
                 {/* start item */}
-                {item?.data.length !== 0 ? (
+                {item?.data && item?.data.length !== 0 ? (
                   item?.data.map((value: CreateNewRoomPayload) => (
                     <div
                       className="flex justify-between items-center p-[10px] overflow-hidden rounded-[10px] shadow-lg border-solid border-[#ADB1C7] border-2 mt-[20px] hover:cursor-pointer hover:opacity-70"
