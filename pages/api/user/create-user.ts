@@ -15,6 +15,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 
   return new Promise((resolve) => {
     req.headers.cookie = "";
+    req.headers["accept-encoding"] = "";
     const handleLoginResponse: ProxyResCallback = (proxyRes, req, res) => {
       let body = "";
       proxyRes.on("data", (chunk) => {

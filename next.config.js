@@ -16,6 +16,9 @@ const nextConfig = {
       messagingSenderId: process.env.FIREBASE_CONFIG_MESSAGINGSENDERID,
       appId: process.env.FIREBASE_CONFIG_APPID,
     },
+    PASSWORD_ADMIN: process.env.PASSWORD_ADMIN,
+    USERNAME_ADMIN: process.env.USERNAME_ADMIN,
+    TOKEN_ADMIN: process.env.TOKEN_ADMIN,
   },
 };
 

@@ -13,7 +13,6 @@ import {
 import { toast } from "react-toastify";
 import { v4 } from "uuid";
 import { authApi } from "../../api-client";
-import { useRouter } from "next/router";
 import { CreateNewRoomPayload } from "../../models";
 export interface INewRoomProps {
   setIsAddRoom: (isAddRoom: boolean) => void;

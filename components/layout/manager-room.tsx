@@ -8,7 +8,6 @@ import { CreateNewRoomPayload } from "../../models";
 import { ref, deleteObject } from "firebase/storage";
 import { storage } from "../../config/config";
 import { authApi } from "../../api-client";
-import { useRouter } from "next/router";
 export interface IManagerRoomProps {}
 
 export default function ManagerRoom({

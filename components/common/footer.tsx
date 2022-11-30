@@ -14,7 +14,7 @@ export default function Footer(props: IFooterProps) {
           </h2>
           <p className="font-bold">
             Website tìm kiếm kiếm phòng trọ miễn phí, <br />
-            Và sẽ luôn như vậy
+            Cho học sinh, sinh viên
           </p>
           <p className="font-bold mt-[10px]">Tác giả: quangsang</p>
         </div>

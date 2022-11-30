@@ -3,6 +3,7 @@ export interface LoginPayload {
   password: string;
 }
 export interface RegisterPayload {
+  _id?: string;
   userName: string;
   email: string;
   name: string;
@@ -45,4 +46,9 @@ export interface GetRoomById {
 export interface GetDirection {
   latitude: number;
   longitude: number;
+}
+export interface NewPassword {
+  userName: string;
+  newPassword: string;
+  currentPassword: string;
 }

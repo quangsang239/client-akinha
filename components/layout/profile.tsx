@@ -13,19 +13,22 @@ export interface IProfileProps {
 
 export default function Profile({ user }: IProfileProps) {
   const router = useRouter();
-  const { data, error } = useSWR(`/user/get-profile/${user.userName}`);
+  const { data, error, mutate } = useSWR(`/user/get-profile/${user.userName}`);
   const [inputName, setInputName] = useState("");
   const [inputEmail, setInputEmail] = useState("");
   const [inputPhoneNumber, setInputPhoneNumber] = useState("");
   const [inputUsername, setInputUsername] = useState("");
   const [verified, setVerified] = useState("false");
+  const [verifiedCurrent, setVerifiedCurrent] = useState("false");
   const [isEmail, setIsEmail] = useState(true);
+
   useEffect(() => {
     setInputEmail(data?.data.user.email);
     setInputPhoneNumber(data?.data.user.phoneNumber);
     setInputName(data?.data.user.name);
     setVerified(data?.data.user.verified);
     setInputUsername(data?.data.user.userName);
+    setVerifiedCurrent(data?.data.user.verified);
     setIsEmail(true);
   }, [data]);
   useEffect(() => {
@@ -38,6 +41,7 @@ export default function Profile({ user }: IProfileProps) {
   };
   const handleOnchangeInputEmail = (e: FormEvent<HTMLInputElement>) => {
     if (e.currentTarget.value !== data?.data.user.email) {
+      setVerifiedCurrent("true");
       setVerified("false");
       if (
         e.currentTarget.value.match(
@@ -55,6 +59,21 @@ export default function Profile({ user }: IProfileProps) {
   const handleOnchangeInputPhoneNumber = (e: FormEvent<HTMLInputElement>) => {
     setInputPhoneNumber(e.currentTarget.value);
   };
+  const handleSendEmail = () => {
+    authApi
+      .sendEmail(inputUsername, inputEmail)
+      .then(() => {
+        toast.success("Đã gửi mã xác thực vào email!", {
+          position: "top-center",
+        });
+        setVerifiedCurrent("true");
+      })
+      .catch(() => {
+        toast.error("Gửi xác thực lỗi!", {
+          position: "top-center",
+        });
+      });
+  };
   const onClickSaveProfile = () => {
     if (isEmail) {
       if (inputEmail !== data?.data.user.email) {
@@ -66,12 +85,38 @@ export default function Profile({ user }: IProfileProps) {
             name: inputName,
             changeEmail: true,
           })
-          .then((result) => {
-            console.log(result);
+          .then(() => {
+            toast.success("Cập nhật thông tin thành công!", {
+              position: "top-center",
+            });
+            mutate();
           })
           .catch((error) => {
             console.log(error);
           });
+      } else {
+        if (
+          inputName !== data?.data.user.name ||
+          inputPhoneNumber !== data?.data.user.phoneNumber
+        ) {
+          authApi
+            .updateProfile({
+              userName: data?.data.user.userName,
+              phoneNumber: inputPhoneNumber,
+              email: inputEmail,
+              name: inputName,
+              changeEmail: false,
+            })
+            .then((result) => {
+              toast.success("Cập nhật thông tin thành công!", {
+                position: "top-center",
+              });
+              mutate();
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        }
       }
     } else {
       toast.warning("Email chưa đúng định dạng!");
@@ -166,8 +211,11 @@ export default function Profile({ user }: IProfileProps) {
                 </svg>
               )}
             </div>
-            {verified === "true" ? null : (
-              <p className="text-red-500 mt-[10px] hover:cursor-pointer select-none hover:opacity-70">
+            {verifiedCurrent === "true" ? null : (
+              <p
+                className="text-red-500 mt-[10px] hover:cursor-pointer select-none hover:opacity-70"
+                onClick={() => handleSendEmail()}
+              >
                 Gửi mã xác thực vào email?
               </p>
             )}

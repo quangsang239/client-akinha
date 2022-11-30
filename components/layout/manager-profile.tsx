@@ -33,7 +33,11 @@ export default function ManagerProfile({
         <div className="w-[20%] h-fit bg-white rounded-[10px] overflow-hidden mr-[20px] text-text-main">
           <div className="">
             <div
-              className="px-[30px] flex items-center text-xl py-[20px] border-b-2 hover:bg-blue-500 hover:cursor-pointer hover:text-white"
+              className={
+                page === 1
+                  ? "px-[30px] flex items-center text-xl py-[20px] border-b-2 bg-main-color hover:cursor-pointer text-white"
+                  : "px-[30px] flex items-center text-xl py-[20px] border-b-2 hover:bg-main-color hover:cursor-pointer hover:text-white"
+              }
               onClick={() => setPage(1)}
             >
               <svg
@@ -54,7 +58,11 @@ export default function ManagerProfile({
               <span className="select-none">Quản lí thông tin</span>
             </div>
             <div
-              className="px-[30px] flex items-center text-xl py-[20px] border-b-2 hover:bg-blue-500 hover:cursor-pointer hover:text-white"
+              className={
+                page === 2
+                  ? "px-[30px] flex items-center text-xl py-[20px] border-b-2 bg-main-color hover:cursor-pointer text-white"
+                  : "px-[30px] flex items-center text-xl py-[20px] border-b-2 hover:bg-main-color hover:cursor-pointer hover:text-white"
+              }
               onClick={() => setPage(2)}
             >
               <svg
@@ -79,7 +87,11 @@ export default function ManagerProfile({
               <span className="select-none">Quản lí phòng trọ</span>
             </div>
             <div
-              className="px-[30px] flex items-center text-xl py-[20px] border-b-2 hover:bg-blue-500 hover:cursor-pointer hover:text-white"
+              className={
+                page === 3
+                  ? "px-[30px] flex items-center text-xl py-[20px] border-b-2 bg-main-color hover:cursor-pointer text-white"
+                  : "px-[30px] flex items-center text-xl py-[20px] border-b-2 hover:bg-main-color hover:cursor-pointer hover:text-white"
+              }
               onClick={() => setPage(3)}
             >
               <svg
@@ -100,7 +112,7 @@ export default function ManagerProfile({
               <span className="select-none">Đổi mật khẩu</span>
             </div>
             <div
-              className="px-[30px] flex items-center text-xl py-[20px] border-b-2 hover:bg-blue-500 hover:cursor-pointer hover:text-white"
+              className="px-[30px] flex items-center text-xl py-[20px] border-b-2 hover:bg-main-color hover:cursor-pointer hover:text-white"
               onClick={() => {
                 authApi.logout();
                 localStorage.removeItem("user");
