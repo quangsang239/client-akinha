@@ -1,10 +1,10 @@
 import {
-  GetDirection,
   LoginPayload,
   RegisterPayload,
   UpdateProfilePayload,
   CreateNewRoomPayload,
   GetRoomById,
+  NewPassword,
 } from "../models";
 import axiosClient from "./axios-client";
 export const authApi = {
@@ -40,9 +40,16 @@ export const authApi = {
   getRoomById({ userName, page }: GetRoomById) {
     return axiosClient.get(`/room/get-room/${userName}/page=${page}`);
   },
-  getDirection(addressFirst: GetDirection, addressSecond: GetDirection) {
-    return axiosClient.get(
-      `https://api.mapbox.com/directions/v5/mapbox/driving/{coordinates}`
-    );
+  newPassword(payload: NewPassword) {
+    return axiosClient.post("/user/new-password", payload);
+  },
+  deleteUser(_id: string, tokenAdmin: string) {
+    return axiosClient.post(`/user/delete-user`, { _id, tokenAdmin });
+  },
+  deleteRoomAdmin(_id: string, tokenAdmin: string) {
+    return axiosClient.post(`/room/delete-room-admin`, { _id, tokenAdmin });
+  },
+  sendEmail(userName: string, email: string) {
+    return axiosClient.post(`/user/send-new-email`, { userName, email });
   },
 };

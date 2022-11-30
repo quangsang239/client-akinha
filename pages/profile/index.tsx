@@ -28,7 +28,7 @@ export default function ViewAll(props: IViewAllProps) {
       router.replace("/login");
     }
   }, []);
-  if (user.userName.length > 0) {
+  if (user.userName && user.userName.length > 0) {
     return (
       <div className="relative">
         <Header user={user} />
