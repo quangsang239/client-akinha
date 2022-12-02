@@ -273,19 +273,19 @@ export default function ManagerRoom({
             className="flex w-full mx-[50px] justify-between "
             breakLabel="..."
             breakClassName="h-[50px] w-[50px] rounded-[10px] overflow-hidden"
-            breakLinkClassName="flex h-full w-full justify-center items-center select-none"
+            breakLinkClassName="flex h-full w-full bg-[#fb836d] text-white justify-center items-center select-none"
             pageClassName="h-[50px] w-[50px] rounded-[10px] overflow-hidden"
-            pageLinkClassName="flex w-full h-full justify-center bg-[#E0E0E0] items-center select-none"
+            pageLinkClassName="flex w-full h-full justify-center bg-[#fb836d] text-white items-center select-none"
             nextLabel=">"
             nextClassName="h-[50px] w-[50px] rounded-[10px] overflow-hidden"
-            nextLinkClassName="w-full h-full flex justify-center bg-[#E0E0E0] items-center select-none"
+            nextLinkClassName="w-full h-full flex justify-center bg-[#fb836d] text-white items-center select-none"
             pageRangeDisplayed={2}
             marginPagesDisplayed={2}
             pageCount={rooms?.data.totalDocument / 3}
             forcePage={page - 1}
             previousLabel="<"
             previousClassName="h-[50px] w-[50px] rounded-[10px] overflow-hidden"
-            previousLinkClassName="flex w-full h-full justify-center bg-[#E0E0E0] items-center select-none"
+            previousLinkClassName="flex w-full h-full justify-center bg-[#fb836d] text-white items-center select-none"
             activeClassName="h-[50px] w-[50px] rounded-[10px] overflow-hidden"
             activeLinkClassName="flex w-full h-full justify-center bg-blue-400 items-center select-none"
             onPageChange={(e) => handlePageClick(e)}
