@@ -75,7 +75,12 @@ export default function Profile({ user }: IProfileProps) {
       });
   };
   const onClickSaveProfile = () => {
-    if (isEmail) {
+    if (
+      isEmail &&
+      inputEmail.length > 0 &&
+      inputName.length > 0 &&
+      inputPhoneNumber.length > 0
+    ) {
       if (inputEmail !== data?.data.user.email) {
         authApi
           .updateProfile({
@@ -119,7 +124,7 @@ export default function Profile({ user }: IProfileProps) {
         }
       }
     } else {
-      toast.warning("Email chưa đúng định dạng!");
+      toast.warning("Vui lòng điền đầy đủ thông tin!");
     }
   };
   return (

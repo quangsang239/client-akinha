@@ -23,8 +23,6 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       });
       proxyRes.on("end", () => {
         try {
-          console.log(body);
-
           const {
             accessToken,
             expireAt,

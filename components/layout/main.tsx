@@ -251,11 +251,15 @@ export function MainLayout(props: LayoutProps) {
                                       d="M4.5 12.75l6 6 9-13.5"
                                     />
                                   </svg>
-                                  <p className="ml-[5px] text-green-500">
-                                    {value?.stateRoom
-                                      ? "Còn phòng"
-                                      : "Hết phòng"}
-                                  </p>
+                                  {value?.stateRoom ? (
+                                    <p className="ml-[5px] text-green-500">
+                                      Còn phòng
+                                    </p>
+                                  ) : (
+                                    <p className="ml-[5px] text-red-500">
+                                      Hết phòng
+                                    </p>
+                                  )}
                                 </div>
                               </div>
                               <div className="flex">
@@ -331,6 +335,8 @@ export function MainLayout(props: LayoutProps) {
                           <p className="text-xl">
                             {value?.category === "Căn hộ"
                               ? "tr/căn"
+                              : value?.category === "Phòng trọ"
+                              ? "tr/phòng"
                               : "tr/người"}
                           </p>
                         </div>
@@ -353,21 +359,21 @@ export function MainLayout(props: LayoutProps) {
                     className="flex w-full justify-between "
                     breakLabel="..."
                     breakClassName="h-[50px] w-[50px] rounded-[10px] overflow-hidden"
-                    breakLinkClassName="flex h-full w-full justify-center items-center select-none"
+                    breakLinkClassName="flex h-full w-full justify-center bg-[#fb836d] items-center select-none"
                     pageClassName="h-[50px] w-[50px] rounded-[10px] overflow-hidden"
                     pageLinkClassName="flex w-full h-full justify-center bg-[#E0E0E0] items-center select-none"
                     nextLabel=">"
                     nextClassName="h-[50px] w-[50px] rounded-[10px] overflow-hidden"
-                    nextLinkClassName="w-full h-full flex justify-center bg-[#E0E0E0] items-center select-none"
+                    nextLinkClassName="w-full h-full flex justify-center bg-[#fb836d] text-white items-center select-none"
                     pageRangeDisplayed={2}
                     marginPagesDisplayed={2}
                     pageCount={item?.totalDocument / 4}
                     forcePage={page - 1}
                     previousLabel="<"
                     previousClassName="h-[50px] w-[50px] rounded-[10px] overflow-hidden"
-                    previousLinkClassName="flex w-full h-full justify-center bg-[#E0E0E0] items-center select-none"
+                    previousLinkClassName="flex w-full h-full justify-center bg-[#fb836d] text-white items-center select-none"
                     activeClassName="h-[50px] w-[50px] rounded-[10px] overflow-hidden"
-                    activeLinkClassName="flex w-full h-full justify-center bg-blue-400 items-center select-none"
+                    activeLinkClassName="flex w-full h-full justify-center bg-[#fb836d] text-white items-center select-none"
                     onPageChange={handlePageClick}
                   />
                 </div>
