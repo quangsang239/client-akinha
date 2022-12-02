@@ -107,7 +107,7 @@ export default function Admin(props: IAdminProps) {
   if (admin) {
     return (
       <div className="max-h-screen relative h-screen bg-slate-100">
-        <div className="flex w-[90%] justify-between mx-auto pt-[30px] pb-[30px]">
+        <div className="flex w-[90%] h-full justify-between mx-auto pt-[30px] pb-[30px]">
           <div className="w-[20%] h-fit bg-white rounded-[10px] overflow-hidden mr-[20px] text-text-main shadow-xl">
             <div className="">
               <div
@@ -190,7 +190,7 @@ export default function Admin(props: IAdminProps) {
               </div>
             </div>
           </div>
-          <div className="w-[75%] m-h-[90%] bg-white rounded-[20px] shadow-xl overflow-scroll scroll-bar">
+          <div className="w-[75%] min-h-[90%] h-[90%] max-h-[90%] bg-white rounded-[20px] shadow-xl overflow-scroll scroll-bar">
             {page === 1 ? (
               <table className="table-auto w-[95%] mt-[20px] text-lg mx-auto">
                 <thead>

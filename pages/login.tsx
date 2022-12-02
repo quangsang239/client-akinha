@@ -209,7 +209,7 @@ export default function Login(props: ILoginProps) {
                 <div className="group-register mr-[10px]">
                   <input
                     id="phone"
-                    type="text"
+                    type="number"
                     className="input-text peer px-[10px]"
                     placeholder="Số điện thoại"
                     value={inputPhoneNumber}
