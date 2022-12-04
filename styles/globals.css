@@ -89,3 +89,7 @@ input::-webkit-inner-spin-button {
   padding: 0 !important;
   margin: 0 !important;
 }
+.active-button {
+  background-color: #fb836d !important;
+  color: white !important;
+}

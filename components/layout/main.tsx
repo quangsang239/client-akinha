@@ -373,7 +373,7 @@ export function MainLayout(props: LayoutProps) {
                     previousClassName="h-[50px] w-[50px] rounded-[10px] overflow-hidden"
                     previousLinkClassName="flex w-full h-full justify-center bg-[#fb836d] text-white items-center select-none"
                     activeClassName="h-[50px] w-[50px] rounded-[10px] overflow-hidden"
-                    activeLinkClassName="flex w-full h-full justify-center bg-[#fb836d] text-white items-center select-none"
+                    activeLinkClassName="flex w-full h-full justify-center active-button items-center select-none"
                     onPageChange={handlePageClick}
                   />
                 </div>
