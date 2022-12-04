@@ -275,7 +275,7 @@ export default function ManagerRoom({
             breakClassName="h-[50px] w-[50px] rounded-[10px] overflow-hidden"
             breakLinkClassName="flex h-full w-full bg-[#fb836d] text-white justify-center items-center select-none"
             pageClassName="h-[50px] w-[50px] rounded-[10px] overflow-hidden"
-            pageLinkClassName="flex w-full h-full justify-center bg-[#fb836d] text-white items-center select-none"
+            pageLinkClassName="flex w-full h-full justify-center bg-[#E0E0E0] items-center select-none"
             nextLabel=">"
             nextClassName="h-[50px] w-[50px] rounded-[10px] overflow-hidden"
             nextLinkClassName="w-full h-full flex justify-center bg-[#fb836d] text-white items-center select-none"
@@ -287,7 +287,7 @@ export default function ManagerRoom({
             previousClassName="h-[50px] w-[50px] rounded-[10px] overflow-hidden"
             previousLinkClassName="flex w-full h-full justify-center bg-[#fb836d] text-white items-center select-none"
             activeClassName="h-[50px] w-[50px] rounded-[10px] overflow-hidden"
-            activeLinkClassName="flex w-full h-full justify-center bg-blue-400 items-center select-none"
+            activeLinkClassName="flex w-full h-full justify-center active-button items-center select-none"
             onPageChange={(e) => handlePageClick(e)}
           />
         </div>

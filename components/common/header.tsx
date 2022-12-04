@@ -1,14 +1,30 @@
 import Link from "next/link";
-export interface IHeaderProps {
-  user?: {
-    name: string;
-    verified: boolean;
-    userName: string;
-    phoneNumber: string;
-  };
-}
+import { useEffect, useState } from "react";
+export interface IHeaderProps {}
 
-export default function Header({ user }: IHeaderProps) {
+export default function Header(props: IHeaderProps) {
+  const [user, setUser] = useState({
+    userName: "",
+    verified: false,
+    name: "",
+    phoneNumber: "",
+  });
+
+  useEffect(() => {
+    if (localStorage.getItem("user")) {
+      setUser(
+        JSON.parse(
+          localStorage.getItem("user") ||
+            JSON.stringify({
+              userName: "",
+              verified: false,
+              name: "",
+              phoneNumber: "",
+            })
+        )
+      );
+    }
+  }, []);
   return (
     <div className="fixed top-0 w-[100%] h-[72px] bg-white z-50">
       <div className="w-[90%] mx-auto flex justify-between items-center my-[10px]">
@@ -33,8 +49,18 @@ export default function Header({ user }: IHeaderProps) {
             />
           </svg>
           {user?.name ? (
-            <span className="text-xl select-none">{user?.userName}</span>
-          ) : null}
+            <Link href="/profile">
+              <span className="text-xl select-none hover:cursor-pointer hover:opacity-70">
+                {user?.userName}
+              </span>
+            </Link>
+          ) : (
+            <Link href="/login">
+              <span className="text-xl select-none hover:cursor-pointer hover:opacity-70">
+                Đăng nhập
+              </span>
+            </Link>
+          )}
         </div>
       </div>
     </div>
