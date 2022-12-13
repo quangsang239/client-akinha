@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 import Footer from "../../components/common/footer";
@@ -31,7 +31,7 @@ export default function ViewAll(props: IViewAllProps) {
   if (user.userName && user.userName.length > 0) {
     return (
       <div className="relative">
-        <Header user={user} />
+        <Header />
         <ManagerProfile
           setIsAddRoom={setIsAddRoom}
           isAddRoom={isAddRoom}

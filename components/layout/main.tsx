@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import ReactMapGL, {
   Marker,
   Popup,
@@ -14,9 +14,10 @@ import useSWR from "swr";
 import { useRouter } from "next/router";
 import { CreateNewRoomPayload, LayoutProps, MapParameter } from "../../models";
 import NotFound from "./not-found";
-import { authApi } from "../../api-client";
 import { Loading } from "../common/loading";
 import Footer from "../common/footer";
+import { authApi } from "../../api-client";
+import { toast } from "react-toastify";
 
 export function MainLayout(props: LayoutProps) {
   const router = useRouter();
@@ -27,6 +28,7 @@ export function MainLayout(props: LayoutProps) {
   const [item, setItem] = useState<any>();
   const [priceSearch, setPriceSearch] = useState("20000000");
   const [popup, setPopup] = useState<CreateNewRoomPayload | null>(null);
+  const [inputSearch, setInputSearch] = useState("");
 
   const [user, setUser] = useState({
     userName: "",
@@ -47,6 +49,30 @@ export function MainLayout(props: LayoutProps) {
   const handlePageClick = (event: any) => {
     setPage(event.selected + 1);
   };
+
+  const handleClickSearch = () => {
+    try {
+      authApi.getLocation(inputSearch).then((result) => {
+        if (result) {
+          if (result?.data.features && result.data.features.length > 0) {
+            const newLocation = {
+              latitude: result.data.features[0].center[1],
+              longitude: result.data.features[0].center[0],
+              zoom: 15,
+            };
+            setViewState(newLocation);
+          } else {
+            toast.warning("Không tìm thấy vị trí!", { position: "top-center" });
+          }
+        } else {
+          toast.warning("Không tìm thấy vị trí!", { position: "top-center" });
+        }
+      });
+    } catch (error) {
+      toast.error("Lỗi hệ thống!");
+    }
+  };
+
   useEffect(() => {
     setItem(data?.data);
   }, [data]);
@@ -393,6 +419,30 @@ export function MainLayout(props: LayoutProps) {
                 height: "100%",
               }}
             >
+              <div className="absolute w-[80%] z-50 left-[52%] -translate-x-1/2 top-[10px] shadow-lg flex items-center justify-center bg-white overflow-hidden rounded-[10px]">
+                <input
+                  className="h-[30px] w-full mx-auto border-none outline-none px-[10px]"
+                  placeholder="Tìm kiếm vị trí"
+                  type="text"
+                  value={inputSearch}
+                  onChange={(e) => setInputSearch(e.currentTarget.value)}
+                />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={2.0}
+                  stroke="currentColor"
+                  className="w-8 h-full mr-[5px] hover:cursor-pointer hover:opacity-50"
+                  onClick={() => handleClickSearch()}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+                  />
+                </svg>
+              </div>
               <GeolocateControl position="top-left" />
               <FullscreenControl position="top-left" />
               <NavigationControl position="top-left" />
