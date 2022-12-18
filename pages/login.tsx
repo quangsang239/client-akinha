@@ -124,7 +124,7 @@ export default function Login(props: ILoginProps) {
           });
         }
       } else {
-        toast.warning("Còn ô dữ dữ liệu chưa điền!", {
+        toast.warning("Còn ô dữ liệu chưa điền!", {
           position: "top-center",
         });
       }
