@@ -58,9 +58,9 @@ export default function ManagerRoom({
         });
       },
       {
-        pending: "Đang xoá phòng",
-        success: "Xoá phòn thành công",
-        error: "Xoá phòng thất bại",
+        pending: "Đang xoá phòng!",
+        success: "Xoá phòng thành công!",
+        error: "Xoá phòng thất bại!",
       },
       {
         position: "top-center",
@@ -211,12 +211,17 @@ export default function ManagerRoom({
                     {(value.price / 1000000).toFixed(1)}
                   </p>
                   <p className="text-xl">
-                    {value.category === "Căn hộ" ? "tr/căn" : "tr/người"}
+                    {value?.category === "Căn hộ"
+                      ? "tr/căn"
+                      : value?.category === "Phòng trọ"
+                      ? "tr/phòng"
+                      : "tr/người"}
                   </p>
                 </div>
               </div>
               <div className="flex flex-col justify-center items-center w-[10%]">
                 <button
+                  aria-label="close"
                   className="hover:opacity-70"
                   onClick={() => setDeleteId(value ? value : null)}
                 >
@@ -236,6 +241,7 @@ export default function ManagerRoom({
                   </svg>
                 </button>
                 <button
+                  aria-label="Name"
                   className="mt-[20px] hover:opacity-70"
                   onClick={() => {
                     setDataRoom(value);

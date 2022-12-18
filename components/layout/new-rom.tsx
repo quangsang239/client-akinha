@@ -541,7 +541,7 @@ export default memo(function NewRoom({
               <div className="flex flex-col text-lg w-[30%]">
                 <label htmlFor="sex">Giới tính</label>
                 <select
-                  id="sex"
+                  aria-label="sex"
                   className="w-full h-[40px] bg-slate-100 outline-none px-[5px] mt-[5px]"
                   onChange={(e) => setSex(e.currentTarget.value)}
                   value={sex}

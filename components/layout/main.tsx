@@ -131,8 +131,7 @@ export function MainLayout(props: LayoutProps) {
               <div className="mt-[30px]">
                 <div className="flex justify-between items-center ">
                   <select
-                    name="quan"
-                    id="quan"
+                    aria-label="district"
                     className="w-[200px] h-[40px] px-[10px] text-lg rounded-[10px] outline outline-2 outline-[#ADB1C7] shadow-lg"
                     value={district}
                     onChange={(e) => setDistrict(e.currentTarget.value)}
@@ -154,8 +153,7 @@ export function MainLayout(props: LayoutProps) {
                     <option value="Phú Nhuận">Phú Nhuận</option>
                   </select>
                   <select
-                    name="price"
-                    id="price"
+                    aria-label="category"
                     className="w-[200px] h-[40px] px-[10px] text-lg rounded-[10px] outline outline-2 outline-[#ADB1C7] shadow-lg"
                     value={category}
                     onChange={(e) => setCategory(e.currentTarget.value)}
@@ -166,8 +164,7 @@ export function MainLayout(props: LayoutProps) {
                     <option value="Căn hộ">Căn hộ</option>
                   </select>
                   <select
-                    name="sort"
-                    id="sort"
+                    aria-label="sex"
                     className="w-[200px] h-[40px] px-[10px] text-lg rounded-[10px] outline outline-2 outline-[#ADB1C7] shadow-lg"
                     value={sex}
                     onChange={(e) => setSex(e.currentTarget.value)}
